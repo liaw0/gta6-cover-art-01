@@ -1,4 +1,4 @@
-# gta6-cover-art-01
+# Vice Coast — GTA-style Cover Studio
 
 [![make.fun · gta6-cover-art-01](https://make.fun/badge/gta6-cover-art-01.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
 [![rank](https://make.fun/badge/gta6-cover-art-01/liaw0/gta6-cover-art-01/rank.svg)](https://make.fun/bounty/gta6-cover-art-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
@@ -6,7 +6,7 @@
 
 [Enter the bounty on make.fun](https://make.fun/c/gta6-cover-art-01) · [make.fun](https://make.fun/?ref=ajkq5baq)
 
-## Vice Coast — GTA-style Cover Studio
+## What it is
 
 A free offline web app that turns any photo and a caption into a multi-panel
 poster cover in the style of GTA 6's posters, exported as a PNG to share. Photos
@@ -32,7 +32,7 @@ never leave the machine: everything runs in the browser from static files.
 Everything in the app is its own: no Rockstar Games logo, artwork or font —
 the lettering is drawn with canvas system fonts and the titles are invented.
 
-## Run
+## Run it
 
 ```sh
 node serve.ts
@@ -41,9 +41,24 @@ node serve.ts
 
 No build step, no network request: `app/` is plain static files.
 
-## Hand in
+## Check it
 
 ```sh
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
-node cli/makefun.mjs check --kit /path/to/kit --repo .
 ```
+
+That copies `app/` and `screenshots/` into `out/` and writes `out/dossier.json`.
+`main.ts` first runs a pre-flight check — `app/index.html` must exist, at most
+4 screenshots of at most 256 KiB each, and the dossier text under its 160 KiB
+cap — and refuses loudly before writing anything if the entry cannot pass.
+
+## Hand in
+
+`main.ts` (Node 22, standard library only) is the hand-in program: it copies
+`app/` and `screenshots/` into `/output` (or `MAKEFUN_OUTPUT_DIR`) and writes
+`/output/dossier.json` with the vendored make.fun library.
+
+---
+
+Entered on [make.fun](https://make.fun/bounty/gta6-cover-art-01) — referral code
+`sa8zecbn`.
